@@ -1,0 +1,184 @@
+/* ANOTAÇÕES{
+    -dps de criar o menu completo e responsivo, analizar onde eu posso aplicar bootstrap no site
+    -arrumar o icone de pagina
+} */
+
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/*---------------------------------------
+  CUSTOM PROPERTIES ( VARIABLES )             
+-----------------------------------------*/
+
+:root {
+    --Black: #0B090A;
+    --Black-smooth: #161A1D;
+    --Red: #BA181B;
+    --White-smooth: rgba(245, 243, 244, 0.50);
+    --White: #FFFFFF;
+}
+
+/* TYPOGRAPY */
+
+h1 {
+    color: #FFF;
+    font-family: "Inter", sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h2 {
+    color: #FFF;
+    text-shadow: 2px 2px 4px #000;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* STYLING */
+
+body {
+    background-color: var(--Black-smooth);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+#header {
+    display: flex;
+    width: 100vw;
+    height: 75px;
+    background-color: var(--Black);
+    align-items: center;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+    gap: 1rem;
+}
+
+#img-logo {
+    width: 59px;
+    height: 52px;
+}
+
+#escrita-telhaflix {
+    color: var(--Red);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2.5rem;
+    width: 100vw;
+}
+
+#hamburguer {
+    display: none;
+    border-top: 4px solid var(--White);
+    width: 39px;
+}
+
+#hamburguer::after,
+#hamburguer::before {
+    content: '';
+    display: block;
+    width: 39px;
+    height: 4px;
+    background-color: var(--White);
+    margin-top: 7px;
+}
+
+#menu {
+    display: flex;
+    gap: 2.5rem;
+}
+
+#menu li a {
+    padding-block: 25px;
+}
+
+#menu li a,
+#logo-tv p {
+    color: var(--White);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#logo-tv {
+    margin-right: 1.5rem;
+}
+
+#img-telhado {
+    width: 72px;
+    height: 33px;
+}
+
+/* Typical Device Breakpoints
+
+Mobile devices – 320px — 480px.
+Tablets and mobile devices – 481px — 768px.
+Laptops and tablets – 769px — 1024px.
+Desktops, large screens – 1025px — 1200px.
+Extra large screens, TV – 1201px, and more. */
+
+@media screen and (max-width: 768px) {
+
+    #header {
+        display: flex;
+        width: 100vw;
+        height: 81px;
+        justify-content: space-between;
+        border-bottom-right-radius: 9px;
+        border-bottom-left-radius: 9px;
+    }
+
+    #img-logo {
+        display: none;
+    }
+
+    #nav {
+        width: auto;
+        margin-left: 0px;
+    }
+
+    #hamburguer {
+        display: block;
+        margin-right: 1.5rem;
+        cursor: pointer;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #logo-tv {
+        display: none;
+    }
+
+}
