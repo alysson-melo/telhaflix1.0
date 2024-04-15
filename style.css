@@ -29,7 +29,7 @@
 h1 {
     color: #FFF;
     font-family: "Inter", sans-serif;
-    font-size: 48px;
+    font-size: 3rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -37,9 +37,8 @@ h1 {
 
 h2 {
     color: #FFF;
-    text-shadow: 2px 2px 4px #000;
     font-family: "Inter", sans-serif;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -51,7 +50,7 @@ body {
     background-color: var(--Black-smooth);
     min-height: 100vh;
     width: 100vw;
-    overflow: hidden;
+     overflow-x: hidden; /* ta estranho isso aqui */
 }
 
 a {
@@ -65,7 +64,7 @@ li {
 .header {
     display: flex;
     width: 100vw;
-    height: 75px; 
+    height: 75px;
     background-color: var(--Black);
     align-items: center;
 }
@@ -159,10 +158,55 @@ li {
     color: white;
     object-fit: contain;
     height: 100vh;
-    padding-top: 81px;
+    display: flex;
+    align-items: center;
 }
 
+.banner-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: 38px;
+    gap: 24px;
+}
 
+.banner-tittle {
+    color: var(--White);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 47px;
+}
+
+.banner-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 15px;
+    border-radius: 9px;
+    border-color: transparent;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--White);
+    background-color: var(--White-smooth);
+}
+
+#banner-button-play {
+    padding-inline: 24px;
+}
+
+.img-buttons {
+    width: 1.375rem;
+    height: 1.375rem;
+}
 
 /* Typical Device Breakpoints
 
@@ -188,7 +232,7 @@ Extra large screens, TV – 1201px, and more. */
         overflow-y: hidden;
         transition: .3s;
         z-index: 1;
-        position:absolute;
+        position: absolute;
     }
 
     .header-active {
