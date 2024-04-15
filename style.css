@@ -50,7 +50,8 @@ body {
     background-color: var(--Black-smooth);
     min-height: 100vh;
     width: 100vw;
-     overflow-x: hidden; /* ta estranho isso aqui */
+    overflow-x: hidden;
+    /* ta estranho isso aqui */
 }
 
 a {
@@ -217,10 +218,6 @@ Desktops, large screens – 1025px — 1200px.
 Extra large screens, TV – 1201px, and more. */
 
 @media screen and (max-width: 768px) {
-
-    body {
-        overflow: hidden;
-    }
 
     .header {
         display: flex;
