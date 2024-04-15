@@ -49,6 +49,9 @@ h2 {
 
 body {
     background-color: var(--Black-smooth);
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 a {
@@ -59,10 +62,10 @@ li {
     list-style: none;
 }
 
-#header {
+.header {
     display: flex;
     width: 100vw;
-    height: 75px;
+    height: 75px; 
     background-color: var(--Black);
     align-items: center;
 }
@@ -110,19 +113,24 @@ li {
     height: 4px;
     background-color: var(--White);
     margin-top: 7px;
+    transition: .3s;
 }
 
-#menu {
+.menu,
+.menu-active {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
-#menu li a {
+.menu li a,
+.menu-active {
     padding-block: 25px;
 }
 
-#menu li a,
-#logo-tv p {
+.menu li a,
+.menu-active li a,
+.logo-tv p,
+.logo-tv-active {
     color: var(--White);
     font-size: 14px;
     font-style: normal;
@@ -130,7 +138,7 @@ li {
     line-height: normal;
 }
 
-#logo-tv {
+.logo-tv {
     margin-right: 1.5rem;
 }
 
@@ -138,6 +146,23 @@ li {
     width: 72px;
     height: 33px;
 }
+
+.barra {
+    display: none;
+}
+
+.banner {
+    z-index: -1;
+    background-image: url(imgs/la_casa_de_papel_backgound.png);
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    object-fit: contain;
+    height: 100vh;
+    padding-top: 81px;
+}
+
+
 
 /* Typical Device Breakpoints
 
@@ -149,13 +174,47 @@ Extra large screens, TV – 1201px, and more. */
 
 @media screen and (max-width: 768px) {
 
-    #header {
+    body {
+        overflow: hidden;
+    }
+
+    .header {
         display: flex;
         width: 100vw;
         height: 81px;
         justify-content: space-between;
         border-bottom-right-radius: 9px;
         border-bottom-left-radius: 9px;
+        overflow-y: hidden;
+        transition: .3s;
+        z-index: 1;
+        position:absolute;
+    }
+
+    .header-active {
+        display: flex;
+        height: 422px;
+        align-items: start;
+        padding-top: 21px;
+        justify-content: space-between;
+        background-color: var(--Black);
+        overflow-y: auto;
+        transition: .3s ease-out;
+        z-index: 1000;
+    }
+
+    .header-active #hamburguer {
+        border-top-color: transparent;
+    }
+
+    .header-active #hamburguer::before {
+        transform: rotate(135deg);
+    }
+
+    .header-active #hamburguer::after {
+        transform: rotate(-135deg);
+        position: relative;
+        top: -11px;
     }
 
     #img-logo {
@@ -165,6 +224,8 @@ Extra large screens, TV – 1201px, and more. */
     #nav {
         width: auto;
         margin-left: 0px;
+        padding-block: 7px;
+        padding-left: 20px;
     }
 
     #hamburguer {
@@ -173,12 +234,44 @@ Extra large screens, TV – 1201px, and more. */
         cursor: pointer;
     }
 
-    #menu {
+    .barra-active {
+        display: block;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        border-top: 4px solid var(--White);
+        width: 100%;
+    }
+
+    .menu {
         display: none;
     }
 
-    #logo-tv {
+    .menu-active {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: absolute;
+        top: 85px;
+        left: 29vw;
+        /* arrumar a resposividade aqui */
+    }
+
+    .menu li a,
+    .menu-active li a,
+    .logo-tv p {
+        font-size: 24px;
+    }
+
+    .logo-tv {
         display: none;
+    }
+
+    .logo-tv-active {
+        position: absolute;
+        top: 344px;
+        left: 43vw;
+        /* arrumar a resposividade aqui */
     }
 
 }
