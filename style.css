@@ -139,7 +139,7 @@ li {
 }
 
 .logo-tv {
-    margin-right: 1.5rem;
+    margin-right: 2.8rem;
 }
 
 #img-telhado {
@@ -198,6 +198,11 @@ li {
     line-height: normal;
     color: var(--White);
     background-color: var(--White-smooth);
+    cursor: pointer;
+}
+
+.banner-button:hover {
+    background-color: rgba(153, 153, 153, 0.5);
 }
 
 #banner-button-play {
@@ -224,8 +229,6 @@ Extra large screens, TV – 1201px, and more. */
         width: 100vw;
         height: 81px;
         justify-content: space-between;
-        border-bottom-right-radius: 9px;
-        border-bottom-left-radius: 9px;
         overflow-y: hidden;
         transition: .3s;
         z-index: 1;
