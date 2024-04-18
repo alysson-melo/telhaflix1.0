@@ -70,19 +70,19 @@ li {
     align-items: center;
 }
 
-#logo {
+.logo {
     display: flex;
     align-items: center;
     margin-left: 1.5rem;
     gap: 1rem;
 }
 
-#img-logo {
+.img-logo {
     width: 59px;
     height: 52px;
 }
 
-#escrita-telhaflix {
+.escrita-telhaflix {
     color: var(--Red);
     font-family: "Bebas Neue", sans-serif;
     font-size: 32px;
@@ -91,7 +91,7 @@ li {
     line-height: normal;
 }
 
-#nav {
+.nav-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,14 +99,14 @@ li {
     width: 100vw;
 }
 
-#hamburguer {
+.hamburguer {
     display: none;
     border-top: 4px solid var(--White);
     width: 39px;
 }
 
-#hamburguer::after,
-#hamburguer::before {
+.hamburguer::after,
+.hamburguer::before {
     content: '';
     display: block;
     width: 39px;
@@ -142,7 +142,7 @@ li {
     margin-right: 2.8rem;
 }
 
-#img-telhado {
+.img-telhado {
     width: 72px;
     height: 33px;
 }
@@ -247,32 +247,32 @@ Extra large screens, TV – 1201px, and more. */
         z-index: 1000;
     }
 
-    .header-active #hamburguer {
+    .header-active .hamburguer {
         border-top-color: transparent;
     }
 
-    .header-active #hamburguer::before {
+    .header-active .hamburguer::before {
         transform: rotate(135deg);
     }
 
-    .header-active #hamburguer::after {
+    .header-active .hamburguer::after {
         transform: rotate(-135deg);
         position: relative;
         top: -11px;
     }
 
-    #img-logo {
+    .img-logo {
         display: none;
     }
 
-    #nav {
+    .nav-menu {
         width: auto;
         margin-left: 0px;
         padding-block: 7px;
         padding-left: 20px;
     }
 
-    #hamburguer {
+    .hamburguer {
         display: block;
         margin-right: 1.5rem;
         cursor: pointer;
