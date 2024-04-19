@@ -1,15 +1,56 @@
-/* ANOTAÇÕES{
-    -dps de criar o menu completo e responsivo, analizar onde eu posso aplicar bootstrap no site
-    -arrumar o icone de pagina
-} */
-
 @charset "UTF-8";
+
+/* Anotações: 
+-colocar max-width na header
+ */
+
+/* Reset CSS */
 
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol,
+li {
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input,
+textarea,
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 /*---------------------------------------
@@ -27,18 +68,28 @@
 /* TYPOGRAPY */
 
 h1 {
-    color: #FFF;
+    color: var(--White);
     font-family: "Inter", sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
 
 h2 {
-    color: #FFF;
+    color: var(--White);
     font-family: "Inter", sans-serif;
-    font-size: 1.5rem;
+    text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.60);
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h3 {
+    color: var(--White);
+    font-family: "Inter", sans-serif;
+    font-size: 1.3rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -58,16 +109,26 @@ a {
     text-decoration: none;
 }
 
+ul {
+    margin: 0;
+}
+
 li {
     list-style: none;
 }
 
+p {
+    margin: 0;
+}
+
 .header {
     display: flex;
+    position: fixed;
     width: 100vw;
     height: 75px;
     background-color: var(--Black);
     align-items: center;
+    z-index: 1000;
 }
 
 .logo {
@@ -214,6 +275,78 @@ li {
     height: 1.375rem;
 }
 
+.banner-fadeBottom {
+    margin-top: -10vh;
+    height: 7rem;
+    background-image: linear-gradient(180deg, transparent, #111111d8, #161A1D);
+    /* background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111); */
+}
+
+.container-grade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 87vw;
+    margin: 0 auto;
+    padding-top: calc(40px + 75px);
+}
+
+.container-cartazes {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 72px;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 34px;
+    column-gap: 25px;
+}
+
+.cartaz {
+    width: 200px;
+    height: 300px;
+    transition: .6s;
+    overflow: hidden;
+}
+
+.cartaz:hover {
+    transform: scale(1.08);
+    transition: .6s;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.img-cartaz {
+    width: 200px;
+    height: 300px;
+}
+
+.detalhes-cartaz {
+    position: relative;
+    top: 0px;
+    left: 17px;
+    transition: .4s;
+}
+
+.cartaz:hover .detalhes-cartaz {
+    position: relative;
+    top: -110px;
+    left: 17px;
+}
+
+.img-cartaz {
+    transition: .6s;
+}
+
+.cartaz:hover .img-cartaz {
+    opacity: 0.5;
+}
+
+.footer {
+    background-color: var(--Black);
+}
+
 /* Typical Device Breakpoints
 
 Mobile devices – 320px — 480px.
@@ -232,7 +365,6 @@ Extra large screens, TV – 1201px, and more. */
         overflow-y: hidden;
         transition: .3s;
         z-index: 1;
-        position: absolute;
     }
 
     .header-active {
