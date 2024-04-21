@@ -2,7 +2,7 @@ if (window.innerWidth <= 768) {
     const hamburger = document.querySelector('.hamburguer')
     const barra = document.querySelector('.barra')
     const menu = document.querySelector('.menu')
-    hamburger.addEventListener('touchstart', clickNav)
+    hamburger.addEventListener('click', clickNav)
 
     function clickNav() {
         barra.classList.toggle('barra-active')
