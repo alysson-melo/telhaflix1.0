@@ -62,9 +62,11 @@ if (window.innerWidth >= 768) {
         })
     }
 
-    const bannerObserver = new IntersectionObserver(handleIntersection)
-    const banner = document.querySelector('.banner')
-    bannerObserver.observe(banner)
+    if (document.querySelector('.banner')) {
+        const bannerObserver = new IntersectionObserver(handleIntersection)
+        const banner = document.querySelector('.banner')
+        bannerObserver.observe(banner)
+    }
 }
 
 

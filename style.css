@@ -417,15 +417,12 @@ video {
     border-radius: 10px;
 }
 
+
 .footer {
     background-color: var(--Black);
     position: relative;
-    top: 1000px;
-}
-
-#footer-tv {
-    position: relative;
-    top: 150px;
+    top: 1000px; 
+    /* tirar o position e o top dps que tiver o carrossel na home */
 }
 
 /* Typical Device Breakpoints
@@ -573,6 +570,15 @@ Extra large screens, TV – 1201px, and more. */
         color: var(--White);
         background-color: var(--White-smooth);
         cursor: pointer;
+    }
+
+}
+
+@media screen and (max-height: 830px) {
+
+    .container-video {
+        position: relative;
+        top: 100px
     }
 
 }
