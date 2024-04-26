@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
 /* Anotações:
--diminuir a resolução da imagem do banner
+-arrumar o fadebottom
+-colocar botao de mutar o audio para o play nao bugar
+-nao esquecer de comprimir as imagens que a karol mandar
 -colocar âncora no site 
--arrumar o fadebottom */
-
+*/
 
 @keyframes opacidade {
     0% {
@@ -36,8 +37,6 @@ p {
     margin: 0;
     padding: 0;
 }
-
-
 
 ul,
 ol,
@@ -117,7 +116,6 @@ body {
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    /* ta estranho isso aqui */
 }
 
 a {
@@ -249,7 +247,6 @@ p {
     background-image: url(imgs/la_casa_de_papel_backgound.png);
     background-size: cover;
     background-position: center center;
-    transition: 1s;
 }
 
 .banner-off::before {
@@ -269,48 +266,12 @@ p {
 
 .trailer-off {
     visibility: hidden;
-    transition: 1s;
 }
 
 .trailer-on {
     visibility: visible;
-    transition: 1s;
     animation: opacidade 1.5s;
 }
-
-
-/* 
-.banner {
-    z-index: -1;
-    background-image: url(imgs/la_casa_de_papel_backgound.png);
-    background-size: cover;
-    background-position: center center;
-    color: white;
-    object-fit: contain;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.banner-off {
-    background-image: none;
-}
-
-.banner video {
-    position: absolute;
-    top: 0px;
-    object-fit: cover;
-}
-
-.trailer-off {
-    visibility: hidden;
-}
-
-.trailer-on {
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-} */
 
 .banner-contents {
     z-index: 1;
@@ -560,7 +521,7 @@ Extra large screens, TV – 1201px, and more. */
 
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
 
     h1 {
         color: var(--White);
