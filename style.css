@@ -1,10 +1,8 @@
 @charset "UTF-8";
 
 /* Anotações:
--arrumar o fadebottom
--colocar botao de mutar o audio para o play nao bugar
+-tentar hospedar a tv ao vivo pelo youtube
 -nao esquecer de comprimir as imagens que a karol mandar
--colocar âncora no site 
 */
 
 @keyframes opacidade {
@@ -273,6 +271,25 @@ p {
     animation: opacidade 1.5s;
 }
 
+.btn-mute {
+    z-index: 1;
+    font-size: 3rem;
+    text-shadow: -2px 2px rgba(0, 0, 0, 0.705);
+    position: absolute;
+    top: 80vh;
+    right: 32px;
+    padding: 20px;
+    cursor: pointer;
+    visibility: hidden;
+    animation: opacidade 2s;
+}
+
+.btn-mute-active {
+    visibility: visible;
+    animation: opacidade 2s;
+    cursor: pointer;
+}
+
 .banner-contents {
     z-index: 1;
     display: flex;
@@ -327,9 +344,12 @@ p {
 
 .banner-fadeBottom {
     z-index: 1000;
-    margin-top: -5vh;
+    margin-top: 100vh;
+    position: absolute;
+    left: 0px;
     height: 7rem;
-    background-image: linear-gradient(180deg, transparent, #111111d8, #161A1D);
+    width: 100vw;
+    background-image: linear-gradient(180deg, transparent, #0e0e0ee5, #161A1D);
     /* background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111); */
 }
 
@@ -421,7 +441,7 @@ video {
 .footer {
     background-color: var(--Black);
     position: relative;
-    top: 1000px; 
+    top: 1000px;
     /* tirar o position e o top dps que tiver o carrossel na home */
 }
 

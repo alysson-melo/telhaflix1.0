@@ -2,7 +2,7 @@ if (window.innerWidth <= 768) {
     const hamburger = document.querySelector('.hamburguer')
     const barra = document.querySelector('.barra')
     const menu = document.querySelector('.menu')
-    hamburger.addEventListener('touchstart', clickNav)
+    hamburger.addEventListener('click', clickNav)
 
     function clickNav() {
         barra.classList.toggle('barra-active')
@@ -12,6 +12,7 @@ if (window.innerWidth <= 768) {
 }
 
 if (window.innerWidth >= 768) {
+
     function trailerOn() {
         const banner = document.querySelector('.banner')
         const trailer = document.querySelector('.trailer-off')
@@ -19,7 +20,25 @@ if (window.innerWidth >= 768) {
         banner.classList.add('banner-off')
         trailer.classList.remove('trailer-off')
         trailer.classList.add('trailer-on')
+
         trailer.currentTime = 0
+        trailer.volume = 0
+
+        const bntMute = document.querySelector('.btn-mute')
+        bntMute.classList.add('btn-mute-active')
+        bntMute.addEventListener('click', mute)
+        bntMute.innerHTML = 'volume_off'
+
+        function mute() {
+            if (trailer.volume == 0) {
+                trailer.volume = 1
+                bntMute.innerHTML = 'volume_up'
+            } else {
+                trailer.volume = 0
+                bntMute.innerHTML = 'volume_off'
+            }
+        }
+
         trailer.play()
 
         trailer.addEventListener('ended', () => {
@@ -30,6 +49,7 @@ if (window.innerWidth >= 768) {
     function trailerOff() {
         const banner = document.querySelector('.banner')
         const trailer = document.querySelector('.trailer-on')
+        const bntMute = document.querySelector('.btn-mute')
 
         if (document.querySelector('.trailer-on')) {
             const fadeAudio = setInterval(() => {
@@ -42,6 +62,19 @@ if (window.innerWidth >= 768) {
                     banner.classList.remove('banner-off')
                     trailer.classList.remove('trailer-on')
                     trailer.classList.add('trailer-off')
+                    bntMute.classList.remove('btn-mute-active')
+                    bntMute.addEventListener('click', mute)
+
+                    function mute() {
+                        if (trailer.volume == 0) {
+                            trailer.volume = 1
+                            bntMute.innerHTML = 'volume_up'
+                        } else {
+                            trailer.volume = 0
+                            bntMute.innerHTML = 'volume_off'
+                        }
+                    }
+
                 }
             }, 80)
         }
@@ -68,152 +101,3 @@ if (window.innerWidth >= 768) {
         bannerObserver.observe(banner)
     }
 }
-
-
-
-
-
-
-
-// if (window.innerWidth <= 768) {
-//     const hamburger = document.querySelector('.hamburguer')
-//     const barra = document.querySelector('.barra')
-//     const menu = document.querySelector('.menu')
-//     hamburger.addEventListener('touchstart', clickNav)
-
-//     function clickNav() {
-//         barra.classList.toggle('barra-active')
-//         menu.classList.toggle('menu-active')
-//         hamburger.classList.toggle('hamburger-active')
-//     }
-// }
-
-// let firstLoad = 1
-
-// function trailerOn() {
-//     const banner = document.querySelector('.banner')
-//     const trailer = document.querySelector('.trailer-off')
-
-//     if (firstLoad == 1) {
-//         banner.classList.add('banner-off')
-//         trailer.classList.remove('trailer-off')
-//         trailer.classList.add('trailer-on')
-//         trailer.currentTime = 0
-//         trailer.play()
-//         firstLoad = 2
-//     } else {
-//         setTimeout(() => {
-//             banner.classList.add('banner-off')
-//             trailer.classList.remove('trailer-off')
-//             trailer.classList.add('trailer-on')
-//             trailer.currentTime = 0
-//             trailer.play()
-//         }, 3000)
-//     }
-
-// }
-
-// function trailerOff() {
-//     const banner = document.querySelector('.banner')
-//     const trailer = document.querySelector('.trailer-on')
-
-//     if (document.querySelector('.trailer-on')) {
-//         const fadeAudio = setInterval(() => {
-//             if (trailer.volume > 0.10) {
-//                 trailer.volume -= 0.10
-//             } else {
-//                 clearInterval(fadeAudio)
-//                 trailer.pause()
-//                 trailer.volume = 1
-//                 banner.classList.remove('banner-off')
-//                 trailer.classList.remove('trailer-on')
-//                 trailer.classList.add('trailer-off')
-//             }
-//         }, 80)
-//     } else {
-//         firstLoad = 2
-//     }
-
-// }
-
-// function handleIntersection(entries, observer) {
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//             trailerOn()
-//         } else {
-//             trailerOff()
-//         }
-//     })
-// }
-
-// setTimeout(() => {
-//     const bannerObserver = new IntersectionObserver(handleIntersection)
-//     const banner = document.querySelector('.banner')
-//     bannerObserver.observe(banner)
-// }, 4000)
-
-
-
-
-
-
-
-
-
-
-// function trailerOn() {
-//     const banner = document.querySelector('.banner')
-//     const trailer = document.querySelector('.trailer-off')
-
-//     banner.classList.add('banner-off')
-//     trailer.classList.remove('trailer-off')
-//     trailer.classList.add('trailer-on')
-//     trailer.play()
-// }
-
-// function trailerOff() {
-//     const trailer = document.querySelector('.trailer-off')
-//     const banner = document.querySelector('.banner')
-
-//     banner.classList.remove('banner-off')
-//     trailer.classList.remove('trailer-on')
-//     trailer.classList.add('trailer-off')
-// }
-
-// function verificarTempoDeRolagem() {
-//     const banner = document.querySelector('.banner')
-//     const limite = banner.offsetTop + banner.offsetHeight - window.innerHeight
-
-//     if (window.scrollY >= limite) {
-//         trailerOn()
-//     } else {
-//         trailerOff()
-//     }
-// }
-
-// window.addEventListener('load', () => {
-//     setTimeout(verificarTempoDeRolagem, 4000)
-// })
-
-
-
-
-
-
-
-
-
-// if (window.innerWidth <= 768) {
-//     const hamburger = document.querySelector('.hamburguer')
-//     const barra = document.querySelector('.barra')
-//     const menu = document.querySelector('.menu')
-//     hamburger.addEventListener('click', clickNav)
-//     hamburger.addEventListener('touchstart', clickNav)
-
-//     function clickNav(event) {
-//         if (event.type === 'touchstart') event.preventDefault()
-//         barra.classList.toggle('barra-active')
-//         menu.classList.toggle('menu-active')
-//         hamburger.classList.toggle('hamburger-active')
-//     }
-// }
