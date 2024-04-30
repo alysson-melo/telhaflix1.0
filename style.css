@@ -538,6 +538,11 @@ video {
     bottom: -70px;
 }
 
+#footer-tv {
+    position: relative;
+    bottom: -200px;
+}
+
 /* Typical Device Breakpoints
 
 Mobile devices – 320px — 480px.
