@@ -113,18 +113,18 @@ if (window.innerWidth >= 768) {
 // ---------------------
 // BOTAO DO TRAILER
 // ---------------------
-if (window.innerWidth >= 768) {
-    const btnAssistir = document.querySelector('#banner-button-play')
-    const btnDetalhes = document.querySelector('#banner-button-detalhes')
 
-    btnAssistir.addEventListener('click', () => {
-        alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
-    })
+const btnAssistir = document.querySelector('#banner-button-play')
+const btnDetalhes = document.querySelector('#banner-button-detalhes')
 
-    btnDetalhes.addEventListener('click', () => {
-        alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
-    })
-}
+btnAssistir.addEventListener('click', () => {
+    alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
+})
+
+btnDetalhes.addEventListener('click', () => {
+    alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
+})
+
 // ---------------------
 // CARROSSEL HOME
 // ---------------------
