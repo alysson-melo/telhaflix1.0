@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 /* Anotações:
--tentar hospedar a tv ao vivo pelo youtube
--nao esquecer de comprimir as imagens que a karol mandar
+-arrumar o tv ao vivo (incorporar pelo youtube)
+-colocar hover nos filmes do carrossel
+-explicar pra karol como tudo ta funcionando
 */
 
 @keyframes opacidade {
@@ -101,7 +102,7 @@ h2 {
 h3 {
     color: var(--White);
     font-family: "Inter", sans-serif;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -350,7 +351,98 @@ p {
     height: 7rem;
     width: 100vw;
     background-image: linear-gradient(180deg, transparent, #0e0e0ee5, #161A1D);
-    /* background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111); */
+}
+
+.container-carrousel {
+    display: flex;
+    padding: 0 35px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 80vh;
+
+}
+
+#first-container-carrousel {
+    margin-top: 40px;
+}
+
+.tittle-h1 {
+    padding-bottom: 30px;
+}
+
+.wrapper {
+    max-width: 1100px;
+    width: 90%;
+    position: relative;
+}
+
+.wrapper i {
+    top: 60%;
+    cursor: pointer;
+    position: absolute;
+    transform: translateY(-50%);
+    color: var(--White);
+
+}
+
+.wrapper i:active {
+    transform: translateY(-50%) scale(0.85);
+}
+
+.wrapper i:first-child {
+    left: -45px;
+}
+
+.wrapper i:last-child {
+    right: -45px;
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 4) - 12px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card-carousel {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel :where(.card-carousel, .img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .card-carousel {
+    scroll-snap-align: start;
+    list-style: none;
+    cursor: pointer;
+}
+
+.carousel .card-carousel img {
+    width: 260px;
+    height: 380px;
+    object-fit: cover;
 }
 
 .container-grade {
@@ -437,12 +529,13 @@ video {
     border-radius: 10px;
 }
 
-
 .footer {
     background-color: var(--Black);
+}
+
+#footer-home {
     position: relative;
-    top: 1000px;
-    /* tirar o position e o top dps que tiver o carrossel na home */
+    bottom: -70px;
 }
 
 /* Typical Device Breakpoints
@@ -452,6 +545,7 @@ Tablets and mobile devices – 481px — 768px.
 Laptops and tablets – 769px — 1024px.
 Desktops, large screens – 1025px — 1200px.
 Extra large screens, TV – 1201px, and more. */
+
 
 @media screen and (max-width: 768px) {
 
@@ -561,7 +655,7 @@ Extra large screens, TV – 1201px, and more. */
     h3 {
         color: var(--White);
         font-family: "Inter", sans-serif;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -601,4 +695,40 @@ Extra large screens, TV – 1201px, and more. */
         top: 100px
     }
 
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper {
+        max-width: 600px;
+        width: 90%;
+        position: relative;
+    }
+
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 10px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .wrapper {
+        max-width: 300px;
+        width: 100%;
+        position: relative;
+    }
+
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .wrapper {
+        max-width: 250px;
+        width: 90%;
+        position: relative;
+    }
+
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
 }
