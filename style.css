@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /* Anotações:
+-usar o user select para nao deixar o carrossel feio e outros elementos tbm
 -arrumar o tv ao vivo (incorporar pelo youtube)
 -colocar hover nos filmes do carrossel
 -explicar pra karol como tudo ta funcionando
@@ -283,12 +284,14 @@ p {
     cursor: pointer;
     visibility: hidden;
     animation: opacidade 2s;
+    user-select: none;
 }
 
 .btn-mute-active {
     visibility: visible;
     animation: opacidade 2s;
     cursor: pointer;
+    user-select: none;
 }
 
 .banner-contents {
@@ -383,7 +386,7 @@ p {
     position: absolute;
     transform: translateY(-50%);
     color: var(--White);
-
+    user-select: none;
 }
 
 .wrapper i:active {
@@ -542,6 +545,7 @@ video {
     position: relative;
     bottom: -200px;
 }
+
 
 /* Typical Device Breakpoints
 
