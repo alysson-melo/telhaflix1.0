@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
 /* Anotações:
--usar o user select para nao deixar o carrossel feio e outros elementos tbm
+-adicionar a pagina detalhes na home para utilizar bootstrap
 -arrumar o tv ao vivo (incorporar pelo youtube)
--colocar hover nos filmes do carrossel
 -explicar pra karol como tudo ta funcionando
 */
 
@@ -638,6 +637,10 @@ Extra large screens, TV – 1201px, and more. */
 
     .logo-tv {
         display: none;
+    }
+
+    .div-video {
+        width: 80vw;
     }
 
 }
