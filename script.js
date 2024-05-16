@@ -36,6 +36,9 @@ if (window.innerWidth >= 768) {
 
     function trailerOn() {
         if (contadorLoad == 1) {
+
+            setTimeout(() => {
+
             const banner = document.querySelector('.banner')
             const trailer = document.querySelector('.trailer-off')
 
@@ -69,10 +72,9 @@ if (window.innerWidth >= 768) {
 
             contadorLoad = 2
         }
+        }, 3000)
 
-        else {
-            setTimeout(() => {
-
+        else {
                 const banner = document.querySelector('.banner')
                 const trailer = document.querySelector('.trailer-off')
 
@@ -102,11 +104,7 @@ if (window.innerWidth >= 768) {
 
                 trailer.addEventListener('ended', () => {
                     trailerOff()
-                })
-
-                contadorLoad = 2
-
-            }, 3000);
+                }) 
         }
 
     }
