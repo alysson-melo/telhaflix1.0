@@ -118,6 +118,8 @@ document.getElementById("trailer").addEventListener('loadedmetadata', () => {
 // ---------------------
 
 if (window.innerWidth <= 768) {
+
+    loadScreen.classList.add('off')
     const hamburger = document.querySelector('.hamburguer')
     const barra = document.querySelector('.barra')
     const menu = document.querySelector('.menu')
@@ -128,6 +130,8 @@ if (window.innerWidth <= 768) {
         menu.classList.toggle('menu-active')
         hamburger.classList.toggle('hamburger-active')
     }
+
+
 }
 
 // ---------------------
