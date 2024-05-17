@@ -1,13 +1,12 @@
-// ------------
+// ---------------------
 // CARREGAMENTO DA PAGINA
-// ------------
+// ---------------------
 
 const loadScreen = document.querySelector('.screen-load')
 
 setTimeout(() => {
     loadScreen.classList.add('off')
-
-}, 3000);
+}, 3000)
 
 // ---------------------
 // MENU
@@ -38,7 +37,43 @@ if (window.innerWidth >= 768) {
         if (contadorLoad == 1) {
 
             setTimeout(() => {
+                const banner = document.querySelector('.banner')
+                const trailer = document.querySelector('.trailer-off')
 
+                banner.classList.add('banner-off')
+                trailer.classList.remove('trailer-off')
+                trailer.classList.add('trailer-on')
+
+                trailer.currentTime = 0
+                trailer.volume = 0
+
+                const bntMute = document.querySelector('.btn-mute')
+                bntMute.classList.add('btn-mute-active')
+                bntMute.addEventListener('click', mute)
+                bntMute.innerHTML = 'volume_off'
+
+                function mute() {
+                    if (trailer.volume == 0) {
+                        trailer.volume = 1
+                        bntMute.innerHTML = 'volume_up'
+                    } else {
+                        trailer.volume = 0
+                        bntMute.innerHTML = 'volume_off'
+                    }
+                }
+
+                trailer.play()
+
+                trailer.addEventListener('ended', () => {
+                    trailerOff()
+                })
+
+                contadorLoad = 2
+
+            }, 3000)
+        }
+
+        else {
             const banner = document.querySelector('.banner')
             const trailer = document.querySelector('.trailer-off')
 
@@ -69,44 +104,7 @@ if (window.innerWidth >= 768) {
             trailer.addEventListener('ended', () => {
                 trailerOff()
             })
-
-            contadorLoad = 2
         }
-        }, 3000)
-
-        else {
-                const banner = document.querySelector('.banner')
-                const trailer = document.querySelector('.trailer-off')
-
-                banner.classList.add('banner-off')
-                trailer.classList.remove('trailer-off')
-                trailer.classList.add('trailer-on')
-
-                trailer.currentTime = 0
-                trailer.volume = 0
-
-                const bntMute = document.querySelector('.btn-mute')
-                bntMute.classList.add('btn-mute-active')
-                bntMute.addEventListener('click', mute)
-                bntMute.innerHTML = 'volume_off'
-
-                function mute() {
-                    if (trailer.volume == 0) {
-                        trailer.volume = 1
-                        bntMute.innerHTML = 'volume_up'
-                    } else {
-                        trailer.volume = 0
-                        bntMute.innerHTML = 'volume_off'
-                    }
-                }
-
-                trailer.play()
-
-                trailer.addEventListener('ended', () => {
-                    trailerOff()
-                }) 
-        }
-
     }
 
     function trailerOff() {
