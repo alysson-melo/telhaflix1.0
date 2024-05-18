@@ -6,7 +6,6 @@ const loadScreen = document.querySelector('.screen-load')
 
 document.getElementById("trailer").addEventListener('loadedmetadata', () => {
 
-
     // ---------------------
     // TRAILER HOME
     // ---------------------
@@ -14,44 +13,43 @@ document.getElementById("trailer").addEventListener('loadedmetadata', () => {
     if (window.innerWidth >= 768) {
 
         loadScreen.classList.add('off')
+        setTimeout(() => {
+            loadScreen.classList.add('d-none')
+        }, 600)
+
 
         function trailerOn() {
 
-            setTimeout(() => {
-                const banner = document.querySelector('.banner')
-                const trailer = document.querySelector('.trailer-off')
+            const banner = document.querySelector('.banner')
+            const trailer = document.querySelector('.trailer-off')
 
-                banner.classList.add('banner-off')
-                trailer.classList.remove('trailer-off')
-                trailer.classList.add('trailer-on')
+            banner.classList.add('banner-off')
+            trailer.classList.remove('trailer-off')
+            trailer.classList.add('trailer-on')
 
-                trailer.currentTime = 0
-                trailer.volume = 0
+            trailer.currentTime = 0
+            trailer.volume = 0
 
-                const bntMute = document.querySelector('.btn-mute')
-                bntMute.classList.add('btn-mute-active')
-                bntMute.addEventListener('click', mute)
-                bntMute.innerHTML = 'volume_off'
+            const bntMute = document.querySelector('.btn-mute')
+            bntMute.classList.add('btn-mute-active')
+            bntMute.addEventListener('click', mute)
+            bntMute.innerHTML = 'volume_off'
 
-                function mute() {
-                    if (trailer.volume == 0) {
-                        trailer.volume = 1
-                        bntMute.innerHTML = 'volume_up'
-                    } else {
-                        trailer.volume = 0
-                        bntMute.innerHTML = 'volume_off'
-                    }
+            function mute() {
+                if (trailer.volume == 0) {
+                    trailer.volume = 1
+                    bntMute.innerHTML = 'volume_up'
+                } else {
+                    trailer.volume = 0
+                    bntMute.innerHTML = 'volume_off'
                 }
+            }
 
-                trailer.play()
+            trailer.play()
 
-                trailer.addEventListener('ended', () => {
-                    trailerOff()
-                })
-
-                contadorLoad = 2
-
-            }, 3000)
+            trailer.addEventListener('ended', () => {
+                trailerOff()
+            })
         }
 
         function trailerOff() {
@@ -110,29 +108,26 @@ document.getElementById("trailer").addEventListener('loadedmetadata', () => {
         }
     }
 
+    // ---------------------
+    // MENU
+    // ---------------------
 
-})
+    if (window.innerWidth <= 768) {
 
-// ---------------------
-// MENU
-// ---------------------
+        loadScreen.classList.add('off')
+        const hamburger = document.querySelector('.hamburguer')
+        const barra = document.querySelector('.barra')
+        const menu = document.querySelector('.menu')
+        hamburger.addEventListener('click', clickNav)
 
-if (window.innerWidth <= 768) {
-
-    loadScreen.classList.add('off')
-    const hamburger = document.querySelector('.hamburguer')
-    const barra = document.querySelector('.barra')
-    const menu = document.querySelector('.menu')
-    hamburger.addEventListener('click', clickNav)
-
-    function clickNav() {
-        barra.classList.toggle('barra-active')
-        menu.classList.toggle('menu-active')
-        hamburger.classList.toggle('hamburger-active')
+        function clickNav() {
+            barra.classList.toggle('barra-active')
+            menu.classList.toggle('menu-active')
+            hamburger.classList.toggle('hamburger-active')
+        }
     }
 
-
-}
+})
 
 // ---------------------
 // BOTAO DO TRAILER

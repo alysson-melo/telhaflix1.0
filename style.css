@@ -2,7 +2,6 @@
 
 /* Anotações:
 -adicionar a pagina detalhes na home para utilizar bootstrap
--spinner pra carregamento de página
 */
 
 @keyframes opacidade {
@@ -231,14 +230,13 @@ p {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     background-color: var(--Black-smooth);
 }
 
 .off {
     opacity: 0;
     transition: opacity 0.5s;
-    visibility: hidden;
 }
 
 .banner {
