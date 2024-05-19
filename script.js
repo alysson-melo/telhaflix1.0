@@ -3,145 +3,146 @@
 // ---------------------
 
 const loadScreen = document.querySelector('.screen-load')
+const trailer = document.querySelector('#trailer')
 
-document.getElementById("trailer").addEventListener('loadedmetadata', () => {
-
-    loadScreen.classList.add('off')
-    setTimeout(() => {
-        loadScreen.classList.add('d-none')
-    }, 600)
-
-    // ---------------------
-    // TRAILER HOME
-    // ---------------------
-
-    if (window.innerWidth >= 768) {
-
-        function trailerOn() {
-
-            const banner = document.querySelector('.banner')
-            const trailer = document.querySelector('.trailer-off')
-
-            banner.classList.add('banner-off')
-            trailer.classList.remove('trailer-off')
-            trailer.classList.add('trailer-on')
-
-            trailer.currentTime = 0
-            trailer.volume = 0
-
-            const bntMute = document.querySelector('.btn-mute')
-            bntMute.classList.add('btn-mute-active')
-            bntMute.addEventListener('click', mute)
-            bntMute.innerHTML = 'volume_off'
-
-            function mute() {
-                if (trailer.volume == 0) {
-                    trailer.volume = 1
-                    bntMute.innerHTML = 'volume_up'
-                } else {
-                    trailer.volume = 0
-                    bntMute.innerHTML = 'volume_off'
-                }
-            }
-
-            trailer.play()
-
-            trailer.addEventListener('ended', () => {
-                trailerOff()
-            })
-        }
-
-        function trailerOff() {
-            const banner = document.querySelector('.banner')
-            const trailer = document.querySelector('.trailer-on')
-            const bntMute = document.querySelector('.btn-mute')
-
-            if (document.querySelector('.trailer-on')) {
-                const fadeAudio = setInterval(() => {
-                    if (trailer.volume > 0.10) {
-                        trailer.volume -= 0.10
-                    } else {
-                        clearInterval(fadeAudio)
-                        trailer.pause()
-                        trailer.volume = 1
-                        banner.classList.remove('banner-off')
-                        trailer.classList.remove('trailer-on')
-                        trailer.classList.add('trailer-off')
-                        bntMute.classList.remove('btn-mute-active')
-                        bntMute.addEventListener('click', mute)
-
-                        function mute() {
-                            if (trailer.volume == 0) {
-                                trailer.volume = 1
-                                bntMute.innerHTML = 'volume_up'
-                            } else {
-                                trailer.volume = 0
-                                bntMute.innerHTML = 'volume_off'
-                            }
-                        }
-
-                    }
-                }, 80)
-            }
-        }
-
-        let timer
-
-        function handleIntersection(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    timer = setTimeout(() => {
-                        trailerOn()
-                    }, 3000)
-                } else {
-                    clearTimeout(timer)
-                    trailerOff()
-                }
-            })
-        }
-
-        if (document.querySelector('.banner')) {
-            const bannerObserver = new IntersectionObserver(handleIntersection)
-            const banner = document.querySelector('.banner')
-            bannerObserver.observe(banner)
-        }
-    }
-
-    // ---------------------
-    // MENU
-    // ---------------------
-
-    if (window.innerWidth <= 768) {
+if (document.querySelector('#trailer')) {
+    trailer.addEventListener('loadedmetadata', () => {
 
         loadScreen.classList.add('off')
-        const hamburger = document.querySelector('.hamburguer')
-        const barra = document.querySelector('.barra')
-        const menu = document.querySelector('.menu')
-        hamburger.addEventListener('click', clickNav)
+        setTimeout(() => {
+            loadScreen.classList.add('d-none')
+        }, 600)
 
-        function clickNav() {
-            barra.classList.toggle('barra-active')
-            menu.classList.toggle('menu-active')
-            hamburger.classList.toggle('hamburger-active')
+        // ---------------------
+        // TRAILER HOME
+        // ---------------------
+
+        if (window.innerWidth >= 768) {
+
+            function trailerOn() {
+
+                const banner = document.querySelector('.banner')
+                const trailer = document.querySelector('.trailer-off')
+
+                banner.classList.add('banner-off')
+                trailer.classList.remove('trailer-off')
+                trailer.classList.add('trailer-on')
+
+                trailer.currentTime = 0
+                trailer.volume = 0
+
+                const bntMute = document.querySelector('.btn-mute')
+                bntMute.classList.add('btn-mute-active')
+                bntMute.addEventListener('click', mute)
+                bntMute.innerHTML = 'volume_off'
+
+                function mute() {
+                    if (trailer.volume == 0) {
+                        trailer.volume = 1
+                        bntMute.innerHTML = 'volume_up'
+                    } else {
+                        trailer.volume = 0
+                        bntMute.innerHTML = 'volume_off'
+                    }
+                }
+
+                trailer.play()
+
+                trailer.addEventListener('ended', () => {
+                    trailerOff()
+                })
+            }
+
+            function trailerOff() {
+                const banner = document.querySelector('.banner')
+                const trailer = document.querySelector('.trailer-on')
+                const bntMute = document.querySelector('.btn-mute')
+
+                if (document.querySelector('.trailer-on')) {
+                    const fadeAudio = setInterval(() => {
+                        if (trailer.volume > 0.10) {
+                            trailer.volume -= 0.10
+                        } else {
+                            clearInterval(fadeAudio)
+                            trailer.pause()
+                            trailer.volume = 1
+                            banner.classList.remove('banner-off')
+                            trailer.classList.remove('trailer-on')
+                            trailer.classList.add('trailer-off')
+                            bntMute.classList.remove('btn-mute-active')
+                            bntMute.addEventListener('click', mute)
+
+                            function mute() {
+                                if (trailer.volume == 0) {
+                                    trailer.volume = 1
+                                    bntMute.innerHTML = 'volume_up'
+                                } else {
+                                    trailer.volume = 0
+                                    bntMute.innerHTML = 'volume_off'
+                                }
+                            }
+                        }
+                    }, 80)
+                }
+            }
+
+            let timer
+
+            function userObserver(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        timer = setTimeout(() => {
+                            trailerOn()
+                        }, 3000)
+                    } else {
+                        clearTimeout(timer)
+                        trailerOff()
+                    }
+                })
+            }
+
+            const bannerObserver = new IntersectionObserver(userObserver)
+            const banner = document.querySelector('.banner')
+            bannerObserver.observe(banner)
+
         }
+    })
+}
+
+// ---------------------
+// MENU
+// ---------------------
+
+if (window.innerWidth <= 768) {
+
+    const hamburger = document.querySelector('.hamburguer')
+    const barra = document.querySelector('.barra')
+    const menu = document.querySelector('.menu')
+    hamburger.addEventListener('click', clickNav)
+
+    function clickNav() {
+        barra.classList.toggle('barra-active')
+        menu.classList.toggle('menu-active')
+        hamburger.classList.toggle('hamburger-active')
     }
-
-})
+}
 
 // ---------------------
-// BOTAO DO TRAILER
+// BOTOES TRAILER
 // ---------------------
 
-const btnAssistir = document.querySelector('#banner-button-play')
-const btnDetalhes = document.querySelector('#banner-button-detalhes')
+if (document.querySelector('.banner-buttons')) {
+    const btnAssistir = document.querySelector('#banner-button-play')
+    const btnDetalhes = document.querySelector('#banner-button-detalhes')
 
-btnAssistir.addEventListener('click', () => {
-    alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
-})
+    btnAssistir.addEventListener('click', () => {
+        alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
+    })
 
-btnDetalhes.addEventListener('click', () => {
-    alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
-})
+    btnDetalhes.addEventListener('click', () => {
+        alert('não é um site pirata não meu mano kkkkkkkkkkkkkkkkkkkkkkkkkkk, ainda')
+    })
+}
 
 // ---------------------
 // CARROSSEL HOME
@@ -221,6 +222,7 @@ function setupCarousel1(wrapper1, carousel1, firstCardWidth1, arrowBtns1) {
         if (window.innerWidth < 800 || !isAutoPlay) return
         timeoutId = setTimeout(() => carousel1.scrollLeft += firstCardWidth1, 2500)
     }
+
     autoPlay()
 
     carousel1.addEventListener("mousedown", dragStart)
@@ -289,6 +291,7 @@ function setupCarousel2(wrapper2, carousel2, firstCardWidth2, arrowBtns2) {
         if (window.innerWidth < 800 || !isAutoPlay) return
         timeoutId = setTimeout(() => carousel2.scrollLeft += firstCardWidth1, 2500)
     }
+
     autoPlay()
 
     carousel2.addEventListener("mousedown", dragStart)
@@ -357,6 +360,7 @@ function setupCarousel3(wrapper3, carousel3, firstCardWidth3, arrowBtns3) {
         if (window.innerWidth < 800 || !isAutoPlay) return
         timeoutId = setTimeout(() => carousel3.scrollLeft += firstCardWidth3, 2500)
     }
+
     autoPlay()
 
     carousel3.addEventListener("mousedown", dragStart)
