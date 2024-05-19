@@ -6,17 +6,16 @@ const loadScreen = document.querySelector('.screen-load')
 
 document.getElementById("trailer").addEventListener('loadedmetadata', () => {
 
+    loadScreen.classList.add('off')
+    setTimeout(() => {
+        loadScreen.classList.add('d-none')
+    }, 600)
+
     // ---------------------
     // TRAILER HOME
     // ---------------------
 
     if (window.innerWidth >= 768) {
-
-        loadScreen.classList.add('off')
-        setTimeout(() => {
-            loadScreen.classList.add('d-none')
-        }, 600)
-
 
         function trailerOn() {
 
