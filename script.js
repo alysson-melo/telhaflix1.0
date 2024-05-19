@@ -106,27 +106,26 @@ if (window.location.pathname === 'https://alysson-melo.github.io/telhaflix/index
             const banner = document.querySelector('.banner')
             bannerObserver.observe(banner)
         }
-
-        // ---------------------
-        // MENU
-        // ---------------------
-
-        if (window.innerWidth <= 768) {
-
-            loadScreen.classList.add('off')
-            const hamburger = document.querySelector('.hamburguer')
-            const barra = document.querySelector('.barra')
-            const menu = document.querySelector('.menu')
-            hamburger.addEventListener('click', clickNav)
-
-            function clickNav() {
-                barra.classList.toggle('barra-active')
-                menu.classList.toggle('menu-active')
-                hamburger.classList.toggle('hamburger-active')
-            }
-        }
-
     })
+}
+
+// ---------------------
+// MENU
+// ---------------------
+
+if (window.innerWidth <= 768) {
+
+    loadScreen.classList.add('off')
+    const hamburger = document.querySelector('.hamburguer')
+    const barra = document.querySelector('.barra')
+    const menu = document.querySelector('.menu')
+    hamburger.addEventListener('click', clickNav)
+
+    function clickNav() {
+        barra.classList.toggle('barra-active')
+        menu.classList.toggle('menu-active')
+        hamburger.classList.toggle('hamburger-active')
+    }
 }
 
 // ---------------------
